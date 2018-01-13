@@ -1,0 +1,51 @@
+<style>
+div.starsnew {
+  width: 270px;
+  display: inline-block;
+}
+
+input.starnew { display: none; }
+
+label.starnew {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.starnew:checked ~ label.starnew:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.starnew-5:checked ~ label.starnew:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.starnew-1:checked ~ label.starnew:before { color: #F62; }
+
+label.starnew:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.starnew:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+</style>
+
+<div class="starsnew">
+  <form action="">
+    <input class="starnew starnew-5" id="starnew-5" type="radio" name="starnew"/>
+    <label class="starnew starnew-5" for="starnew-5"></label>
+    <input class="starnew starnew-4" id="starnew-4" type="radio" name="starnew"/>
+    <label class="starnew starnew-4" for="starnew-4"></label>
+    <input class="starnew starnew-3" id="starnew-3" type="radio" name="starnew"/>
+    <label class="starnew starnew-3" for="starnew-3"></label>
+    <input class="starnew starnew-2" id="starnew-2" type="radio" name="starnew"/>
+    <label class="starnew starnew-2" for="starnew-2"></label>
+    <input class="starnew starnew-1" id="starnew-1" type="radio" name="starnew"/>
+    <label class="starnew starnew-1" for="starnew-1"></label>
+  </form>
+</div>

@@ -1,0 +1,217 @@
+<div>
+
+<div class=well>
+  <img src="/views/touro-logo.png" width=250></img>
+  <font><i style="text-align: center;">{{user}}     "LET THE WORLD TRAVEL WITH YOU"</i>
+</font></div>
+<div class="container">
+
+
+
+
+
+
+
+<style>
+
+#padding{
+  padding-top:10px;
+  border-style: solid;
+  border-color: #42a5f5;
+      border-width: 5px;
+      border-radius: 20px;
+      margin-bottom:8px;
+      margin-left: -10px;
+      margin-right: 100px;
+
+      }
+div.stars {
+  width: 20px;
+  display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 2px;
+  font-size: 15px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.star-5:check  ed ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+</style>
+
+
+
+<style>
+div.starsnew {
+  width: 20px;
+  display: inline-block;
+}
+
+input.starnew { display: none;}
+
+label.starnew {
+  float: right;
+  padding: 2px;
+
+  font-size: 15px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.starnew:checked ~ label.starnew:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.starnew-5:checked ~ label.starnew:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.starnew-1:checked ~ label.starnew:before { color: #F62; }
+
+label.starnew:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.starnew:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+</style>
+
+<style>
+
+body {
+background-color: #f5f8fa;
+font-family: "Lato"
+}
+
+#right{
+position:absolute;
+  top:-70;
+  right:0;
+}
+#current{
+  position:absolute;
+
+  top: -20;
+    right: 0;
+
+    padding-top:10px;
+    border-style: solid;
+    border-color: #a9a9a9;
+        border-width: 5px;
+        border-radius: 20px;
+        margin-bottom:8px;
+        margin-right:20px;
+
+
+}
+#current .comment{
+  color:black;
+}
+
+.com { width: 300px; height: 75px }
+</style>
+			<div class="col-md-8 col-sm-12" ng-repeat="item in places" id="padding">
+
+<font color="black">
+          <ul>LOCATION:{{item.address}}</ul>
+			   <ul>RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.safety| number: 2}}</ul>
+			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
+         <ul>COMMENTS:</ul>
+				 <ul ng-repeat="comment in item.comments">
+						<ul>{{comment.description}} by {{comment.user}}</ul>
+				 </ul>
+         <ul>Complaints:</ul>
+        <ul ng-repeat="complaint in item.complaints">
+           <ul>{{complaint.complaint}}</ul>
+        </ul>
+</font>
+<hr>
+
+			</div>
+    <hr>
+
+<br>
+			<div class="col-md-4 col-sm-12" ng-repeat="item in details" id="current">
+<font color="black">
+        <ul>LOCATION:{{item.address}}</ul>
+			   <ul>RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.safety | number: 2}}</ul>
+			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
+			   <ul ng-repeat="comment in item.comments">
+			   	  <ul>{{comment.description}} by {{comment.user}}</ul>
+			   </ul>
+         <ul>Complaints:</ul>
+        <ul ng-repeat="complaint in item.complaints">
+           <ul>{{complaint.complaint}}</ul>
+        </ul>
+         <ul>RATE:</ul>
+
+                       <ul><button ng-click="addrate(1)" name="1" style="background-color: #33a2ea" value=1><font color="black">1</font></button>
+                       <button ng-click="addrate(2)" style="background-color: #33a2ea"><font color="black">2</font></button>
+                       <button ng-click="addrate(3)" style="background-color: #33a2ea"><font color="black">3</font></button>
+                       <button ng-click="addrate(4)" style="background-color: #33a2ea"><font color="black">4</font></button>
+                       <button ng-click="addrate(5)" style="background-color: #33a2ea"><font color="black">5</font></button> </ul>
+
+
+
+
+<br>
+<br>
+
+        <ul>SAFETY-RATE:</ul>
+
+
+
+              <ul><button ng-click="addsafe(1)" name="1" style="background-color: #4CAF50;" value=1>1</button>
+              <button ng-click="addsafe(2)" style="background-color: #cfea22"><font color="black">2</font></button>
+              <button ng-click="addsafe(3)" style="background-color: yellow"><font color="black">3</font></button>
+              <button ng-click="addsafe(4)" style="background-color: #ea8022"><font color="black">4</font></button>
+              <button ng-click="addsafe(5)" style="background-color: red">5</button> </ul>
+
+
+
+<br>
+      	<form ng-submit="addComment()" class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <textarea ng-model="comment.newcomment" maxlength=200 class="com"></textarea>
+<ul>
+				<input type="submit" />
+</ul>
+    		</form>
+
+        <form ng-submit="addComplaint()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <font color="black"><textarea ng-model="complaint.newcomplaint" maxlength=200 class="com"></textarea></font>
+<ul>
+        <button type="submit"><font color="black">Anonymus complaint</font></button>
+</ul>
+        </form>
+
+      </font>
+      </div>
+    </div>
+		</div>
